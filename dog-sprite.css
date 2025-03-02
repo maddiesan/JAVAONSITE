@@ -1,0 +1,284 @@
+/* Dog sprite animations */
+@keyframes walk {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+}
+
+@keyframes sit {
+    0% { transform: scaleY(1); }
+    100% { transform: scaleY(0.7); }
+}
+
+@keyframes jump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-50px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes feed {
+    0% { transform: translateY(0) rotate(0); }
+    25% { transform: translateY(-5px) rotate(-5deg); }
+    75% { transform: translateY(-5px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0); }
+}
+
+@keyframes bath {
+    0% { transform: translateY(0) rotate(0); }
+    25% { transform: translateY(-3px) rotate(-3deg); }
+    75% { transform: translateY(-3px) rotate(3deg); }
+    100% { transform: translateY(0) rotate(0); }
+}
+
+@keyframes heart-float {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-50px) scale(1.5); }
+}
+
+@keyframes water-sparkle {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(1.5); }
+}
+
+@keyframes run {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(-2deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(-8px) rotate(2deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes float {
+    from { transform: translateX(-100px); }
+    to { transform: translateX(calc(100vw + 100px)); }
+}
+
+.walking {
+    animation: walk 0.5s infinite alternate;
+}
+
+.sitting {
+    animation: sit 0.5s forwards;
+}
+
+.jumping {
+    animation: jump 0.6s ease-in-out;
+}
+
+.feeding {
+    animation: feed 1s ease-in-out;
+}
+
+.bathing {
+    animation: bath 2s ease-in-out;
+}
+
+.running {
+    animation: run 0.4s infinite;
+}
+
+.heart-float {
+    animation: heart-float 1s ease-out forwards;
+}
+
+.water-sparkle {
+    animation: water-sparkle 2s ease-out forwards;
+}
+
+/* Stop all animations */
+.stop-animation {
+    animation: none !important;
+    transform: none !important;
+    transition: all 0.3s ease;
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border: 3px solid #555;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.minecraft-sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, #B5D8FF 0%, #D6E8FF 100%);
+}
+
+.sun {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    width: 50px;
+    height: 50px;
+    background: #FFE5B4;
+    box-shadow: 0 0 30px rgba(255, 229, 180, 0.6);
+    clip-path: polygon(
+        50% 0%, 63% 38%, 100% 38%, 69% 59%,
+        82% 100%, 50% 75%, 18% 100%, 31% 59%,
+        0% 38%, 37% 38%
+    );
+}
+
+.clouds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    animation: float 20s linear infinite;
+}
+
+.cloud:nth-child(1) {
+    top: 40px;
+    left: -100px;
+    width: 80px;
+    height: 25px;
+}
+
+.cloud:nth-child(2) {
+    top: 70px;
+    left: -180px;
+    width: 100px;
+    height: 30px;
+    animation-delay: -10s;
+}
+
+.background-trees {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    z-index: 1;
+}
+
+.tree {
+    position: absolute;
+    width: 60px;
+    height: 100px;
+}
+
+.tree:nth-child(1) { left: 10%; transform: scale(0.8); }
+.tree:nth-child(2) { left: 30%; transform: scale(1.2); }
+.tree:nth-child(3) { left: 60%; transform: scale(0.9); }
+.tree:nth-child(4) { left: 85%; transform: scale(1.1); }
+
+.tree::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 40px;
+    background: #8B4513;
+    image-rendering: pixelated;
+}
+
+.tree::after {
+    content: '';
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: #A8D5BA;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    box-shadow: 0 5px 0 #8BC0A4;
+}
+
+.grass-blocks {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+}
+
+.block {
+    flex: 1;
+    height: 60px;
+    background: linear-gradient(
+        to bottom,
+        #B8E6CF 0px,    /* Pastel grass top */
+        #B8E6CF 30px,
+        #B4A89B 30px,   /* Pastel dirt */
+        #B4A89B 60px
+    );
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    image-rendering: pixelated;
+}
+
+.flowers {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    z-index: 2;
+}
+
+.flower {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    bottom: 0;
+}
+
+.flower.red {
+    background: linear-gradient(to bottom, transparent 60%, #81C784 60%),
+                linear-gradient(45deg, transparent 40%, #FF5252 40% 60%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, #FF5252 40% 60%, transparent 60%);
+}
+
+.flower.yellow {
+    background: linear-gradient(to bottom, transparent 60%, #81C784 60%),
+                linear-gradient(45deg, transparent 40%, #FFD740 40% 60%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, #FFD740 40% 60%, transparent 60%);
+}
+
+.flower:nth-child(1) { left: 25%; }
+.flower:nth-child(2) { left: 45%; }
+.flower:nth-child(3) { left: 75%; }
+
+#dog {
+    position: absolute;
+    left: 50px;
+    bottom: 80px;
+    transition: transform 0.2s ease;
+    z-index: 10;
+}
+
+/* Effects */
+#heart-effect {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    pointer-events: none;
+}
+
+#water-effect {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+    opacity: 0.3;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hidden {
+    display: none !important;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Learning Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dog-sprite.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Java Quiz Time</h1>
+        </header>
+
+        <div class="content-wrapper">
+            <div id="lesson-section">
+                <h2>Java Background</h2>
+                <div id="lesson-content"></div>
+                <div class="lesson-navigation">
+                    <button id="prev-lesson" disabled>Previous</button>
+                    <span id="lesson-progress">Lesson 1/3</span>
+                    <button id="next-lesson">Next</button>
+                </div>
+                <button id="start-quiz" class="disabled" disabled>Start Quiz</button>
+            </div>
+            
+            <div id="quiz-section" style="display: none;">
+                <h2>Quiz Time!</h2>
+                <div id="hint-status">
+                    <p id="hint-count">Hints remaining: 3</p>
+                    <p id="hint-text" style="display: none;"></p>
+                </div>
+                <div id="quiz-container"></div>
+                <button id="submit-quiz">Submit Answers</button>
+                <div id="score-display"></div>
+            </div>
+
+            <div id="reward-section" style="display: none;">
+                <h2>Congratulations! You've Unlocked Your Minecraft Dog!</h2>
+                <div class="status-bars">
+                    <div class="status-item">
+                        <span>Hunger:</span>
+                        <div class="progress-bar">
+                            <div id="hunger-bar" class="progress"></div>
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <span>Cleanliness:</span>
+                        <div class="progress-bar">
+                            <div id="clean-bar" class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="game-container">
+                    <div class="minecraft-sky">
+                        <div class="sun"></div>
+                        <div class="clouds">
+                            <div class="cloud"></div>
+                            <div class="cloud"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="minecraft-scene">
+                        <!-- Background Trees -->
+                        <div class="background-trees">
+                            <div class="tree"></div>
+                            <div class="tree"></div>
+                            <div class="tree"></div>
+                            <div class="tree"></div>
+                        </div>
+
+                        <!-- Grass Blocks -->
+                        <div class="grass-blocks">
+                            <div class="block"></div>
+                            <div class="block"></div>
+                            <div class="block"></div>
+                            <div class="block"></div>
+                            <div class="block"></div>
+                            <div class="block"></div>
+                            <div class="block"></div>
+                            <div class="block"></div>
+                        </div>
+
+                        <!-- Flowers -->
+                        <div class="flowers">
+                            <div class="flower red"></div>
+                            <div class="flower yellow"></div>
+                            <div class="flower red"></div>
+                        </div>
+                        
+                        <!-- Dog -->
+                        <div id="dog">
+                            <div class="minecraft-dog body"></div>
+                            <div class="minecraft-dog head"></div>
+                            <div class="minecraft-dog snout"></div>
+                            <div class="minecraft-dog ear-left"></div>
+                            <div class="minecraft-dog ear-right"></div>
+                            <div class="minecraft-dog leg-front-left"></div>
+                            <div class="minecraft-dog leg-front-right"></div>
+                            <div class="minecraft-dog leg-back-left"></div>
+                            <div class="minecraft-dog leg-back-right"></div>
+                            <div class="minecraft-dog tail"></div>
+                            <div class="minecraft-dog eye-left"></div>
+                            <div class="minecraft-dog eye-right"></div>
+                            <div class="minecraft-dog nose"></div>
+                            <div id="water-effect" class="hidden"></div>
+                            <div id="heart-effect" class="hidden">❤️</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="run">Run</button>
+                    <button id="sit">Sit</button>
+                    <button id="jump">Jump</button>
+                    <button id="feed">Feed</button>
+                    <button id="bath">Bath</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
